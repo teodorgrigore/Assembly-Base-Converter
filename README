@@ -1,0 +1,23 @@
+Implementing an assembly language program that converts a number to a given base and displays the result.
+The number to be converted is a 32-bit positive integer, and the base can be between 2 and 16.
+
+(Romanian)
+Detalii implementare:
+	-In registrele ecx si ebx am pus numarul de numere din vector
+	-Din ebx am scazut pe ecx, astfel incat acesta sa aiba valori de la 0 la n-1
+si parcurgerea celor doi vectori sa fie de la primul la ultimul element
+	-Vectorii avand elemente de 4 octeti fiecare, parcurgem memoria din 4 in 4 octeti
+	-Verificam daca baza, stocata in ebx se afla in multimea corecta {2,3...,16}. Daca
+nu corespunde, se printeaza mesajul de eroare si se trece la urmatorul set de elemente
+(daca au mai ramas).
+	-Impartim eax la ebx, catul fiind stocat in eax, restul in edx. Edx este stocat pe
+stiva pentru a fi folosit ulterior, iar impartirea se repeta pana cand eax ajunge la 0,
+astfel incat la sfarsitul acestei bucle sa avem pe stiva toate resturile impartirii.
+	-Bucla "print" recupereaza de pe stiva resturile in ordinea inversa introducerii lor(LIFO),
+apoi, in functie de valoare, adaugam 48 (daca restul e intre 0-9) sau 87 (daca e intre 10-15)
+pentru a le putea printa corect ca si caractere. Aceste valori (48 si 87) le-am gasit consultand
+tabelul de valori ASCII. Dupa aceste modificari(din dec in char), se printeaza ca si caracter restul
+si se reia bucla pana cand se goleste stiva (stack pointerul creste pana ajunge egal cu base 
+pointerul)
+	-Se decrementeaza ecx si in cazul in care nu este 0, se reia bucla principala si se efectueaza
+din nou operatiile pe urmatorul set de valori din vector.
