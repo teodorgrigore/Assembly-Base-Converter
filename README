@@ -1,7 +1,3 @@
-Implementing an assembly language program that converts a number to a given base and displays the result.
-The number to be converted is a 32-bit positive integer, and the base can be between 2 and 16.
-
-(Romanian)
 Detalii implementare:
 	-In registrele ecx si ebx am pus numarul de numere din vector
 	-Din ebx am scazut pe ecx, astfel incat acesta sa aiba valori de la 0 la n-1
